@@ -8,7 +8,7 @@ var theory = require('number-theory');
 require('loadenv')('log-server');
 
 var log = bunyan.createLogger({
-  name: 'optimus',
+  name: 'log-server',
   streams: [
     { stream: process.stdout }
   ],
