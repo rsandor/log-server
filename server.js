@@ -10,11 +10,17 @@ require('loadenv')('log-server');
 var log = bunyan.createLogger({
   name: 'log-server',
   streams: [
-    { stream: process.stdout }
+    {
+      stream: process.stdout,
+      level: process.env.LOG_LEVEL
+    },
+    {
+      path: '/var/log/log-server/all.log',
+      level: 'trace'
+    }
   ],
   serializers: bunyan.stdSerializers
 });
-log.level(process.env.LOG_LEVEL);
 
 log.info('Sieving all primes < 1,000,000')
 var primes = theory.sieve(1000000);
